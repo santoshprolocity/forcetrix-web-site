@@ -1,774 +1,819 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <title>Forcetrix Technologies</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Forcetrix Technologies - Modern Salesforce, cloud, and AI engineering partner for ambitious teams." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-alt: #0b1020;
-      --card: #111827;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56,189,248,0.12);
-      --accent-strong: #0ea5e9;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --border-subtle: rgba(148,163,184,0.35);
-      --danger: #f97373;
-      --radius-lg: 18px;
-      --radius-pill: 999px;
-      --shadow-soft: 0 22px 60px rgba(15,23,42,0.9);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0b1120 0, #020617 40%, #000 100%);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page-shell {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .shell-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 24px 20px 56px;
-    }
-
-    /* Nav */
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      background: conic-gradient(from 180deg, #38bdf8, #22c55e, #a855f7, #38bdf8);
-      padding: 1px;
-    }
-
-    .brand-logo-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: inherit;
-      background: radial-gradient(circle at 25% 10%, #e0f2fe 0, #020617 55%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #e0f2fe;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-
-    .brand-text-title {
-      font-weight: 600;
-      font-size: 18px;
-      letter-spacing: -0.03em;
-    }
-
-    .brand-text-sub {
-      font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-    }
-
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 7px 12px;
-      border-radius: var(--radius-pill);
-      background: rgba(15,23,42,0.85);
-      border: 1px solid rgba(148,163,184,0.55);
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      backdrop-filter: blur(12px);
-    }
-
-    .nav-cta-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 6px rgba(34,197,94,0.25);
-    }
-
-    /* Layout */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    @media (max-width: 880px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .nav {
-        flex-direction: row;
-      }
-      .shell-inner {
-        padding-inline: 18px;
-      }
-    }
-
-    /* Hero copy */
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 10px 4px 4px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.85);
-      border: 1px solid rgba(148,163,184,0.5);
-      margin-bottom: 14px;
-      backdrop-filter: blur(10px);
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .eyebrow-pill {
-      padding: 3px 9px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 0 0, #22c55e 0, #16a34a 40%, #0f766e 100%);
-      color: #e5f9f0;
-      font-weight: 600;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-    }
-
-    .eyebrow-divider {
-      width: 1px;
-      height: 14px;
-      background: rgba(148,163,184,0.55);
-    }
-
-    .hero-title {
-      font-size: clamp(32px, 4vw, 40px);
-      line-height: 1.1;
-      letter-spacing: -0.05em;
-      margin-bottom: 14px;
-    }
-
-    .hero-title span.accent {
-      background: linear-gradient(120deg, #38bdf8, #22c55e, #a855f7);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-sub {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 20px;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .meta-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-
-    .btn-primary {
-      padding: 10px 18px;
-      border-radius: var(--radius-pill);
-      border: none;
-      background: radial-gradient(circle at 0 0, #38bdf8 0, #0ea5e9 32%, #0369a1 100%);
-      color: #e0f2fe;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 18px 40px rgba(8,47,73,0.7);
-    }
-
-    .btn-primary span.icon {
-      font-size: 15px;
-    }
-
-    .btn-ghost {
-      padding: 9px 14px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148,163,184,0.55);
-      background: rgba(15,23,42,0.7);
-      color: var(--muted);
-      font-size: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      cursor: pointer;
-    }
-
-    .btn-ghost-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(56,189,248,0.15);
-      border: 1px solid #38bdf8;
-    }
-
-    .hero-footnote {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    /* Right card */
-    .hero-card {
-      background: radial-gradient(circle at top left, rgba(56,189,248,0.18) 0, rgba(15,23,42,0.96) 38%, #020617 100%);
-      border-radius: 22px;
-      padding: 18px 18px 16px;
-      border: 1px solid rgba(148,163,184,0.5);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top left, rgba(56,189,248,0.25), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(168,85,247,0.25), transparent 50%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    .hero-card-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .stack-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.85);
-      border: 1px solid rgba(148,163,184,0.55);
-      font-size: 11px;
-      color: var(--muted);
-      backdrop-filter: blur(10px);
-    }
-
-    .stack-pill span.dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #22c55e, #a3e635);
-    }
-
-    .stack-pill strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .status-pill {
-      padding: 4px 11px;
-      border-radius: 999px;
-      background: rgba(34,197,94,0.1);
-      border: 1px solid rgba(34,197,94,0.7);
-      font-size: 11px;
-      color: #bbf7d0;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .status-pill span {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34,197,94,0.3);
-    }
-
-    .card-title {
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      margin-bottom: 10px;
-    }
-
-    .card-subtitle {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .pill {
-      padding: 5px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.55);
-      background: rgba(15,23,42,0.9);
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .pill strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .metric {
-      padding: 8px 9px;
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: rgba(15,23,42,0.88);
-      font-size: 11px;
-    }
-
-    .metric-label {
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .metric-value {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .metric-value span.sub {
-      font-size: 11px;
-      color: var(--muted);
-      font-weight: 400;
-    }
-
-    .metric-chip {
-      font-size: 10px;
-      color: #bbf7d0;
-      background: rgba(22,163,74,0.23);
-      border-radius: 999px;
-      padding: 2px 6px;
-      display: inline-block;
-      margin-left: 5px;
-    }
-
-    .roadmap {
-      border-radius: 16px;
-      border: 1px solid rgba(148,163,184,0.55);
-      background: rgba(15,23,42,0.9);
-      padding: 10px 10px 9px;
-      font-size: 11px;
-      color: var(--muted);
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
-      gap: 10px;
-      align-items: flex-start;
-    }
-
-    .roadmap-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: rgba(148,163,184,0.9);
-      margin-top: 2px;
-    }
-
-    .roadmap-list {
-      list-style: none;
-      display: grid;
-      gap: 3px;
-    }
-
-    .roadmap-list li {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .roadmap-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(56,189,248,0.4);
-    }
-
-    /* Secondary sections */
-    .section {
-      margin-top: 40px;
-    }
-
-    .section-title {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .section-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
-      gap: 20px;
-    }
-
-    @media (max-width: 880px) {
-      .section-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .card-lite {
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(148,163,184,0.5);
-      background: rgba(15,23,42,0.9);
-      padding: 14px 14px 13px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .card-lite h3 {
-      font-size: 14px;
-      color: var(--text);
-      margin-bottom: 6px;
-      letter-spacing: -0.02em;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .tag {
-      padding: 3px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .tag.accent {
-      border-color: #22c55e;
-      color: #bbf7d0;
-      background: rgba(22,163,74,0.16);
-    }
-
-    /* Contact row */
-    .contact-row {
-      margin-top: 26px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(31,41,55,0.9);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .contact-pill {
-      padding: 7px 12px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148,163,184,0.6);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(15,23,42,0.9);
-    }
-
-    .contact-pill span.icon {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.9);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .contact-link {
-      font-size: 12px;
-      color: #bae6fd;
-    }
-
-    .contact-link span {
-      opacity: 0.8;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Forcetrix Technologies - Expert Salesforce migrations, AI-powered workflows, and enterprise cloud solutions. We make NPSP to NPC migrations fun again.">
+    <title>Forcetrix Technologies | Salesforce & AI Workflow Experts</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for Theming */
+        :root {
+            --transition-speed: 0.3s;
+        }
+        
+        [data-theme="dark"] {
+            --bg-primary: #0a0e1f;
+            --bg-secondary: #050812;
+            --bg-card: #121d35;
+            --bg-card-gradient: radial-gradient(circle at top right, rgba(37, 99, 235, 0.05), transparent 70%);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #2563eb;
+            --accent-blue-light: #3b82f6;
+            --accent-blue-dark: #1d4ed8;
+            --accent-teal: #14b8a6;
+            --accent-teal-light: #5eead4;
+            --border-color: rgba(148, 163, 184, 0.1);
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+        
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f1f5f9;
+            --bg-card: #f1f5f9;
+            --bg-card-gradient: radial-gradient(circle at top right, rgba(37, 99, 235, 0.03), transparent 70%);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent-blue: #2563eb;
+            --accent-blue-light: #3b82f6;
+            --accent-blue-dark: #1d4ed8;
+            --accent-teal: #14b8a6;
+            --accent-teal-light: #0d9488;
+            --border-color: rgba(30, 41, 59, 0.1);
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+        
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: background var(--transition-speed), color var(--transition-speed);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: background var(--transition-speed), border-color var(--transition-speed);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-teal) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .brand-text h1 {
+            font-size: clamp(18px, 3vw, 22px);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+        
+        .tagline {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            font-size: 13px;
+            color: var(--text-secondary);
+            transition: background var(--transition-speed), border-color var(--transition-speed);
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .theme-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+        
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        
+        @media (min-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1.2fr 1fr;
+            }
+        }
+        
+        .eyebrow {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(20, 184, 166, 0.1));
+            border: 1px solid var(--accent-blue);
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-blue-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+        
+        .hero-title {
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .hero-highlights {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        
+        .hero-highlights li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+        
+        .hero-highlights li::before {
+            content: "✓";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+            border-radius: 50%;
+            color: white;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--transition-speed);
+            cursor: pointer;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+            color: white;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent-blue);
+            background: rgba(37, 99, 235, 0.05);
+        }
+        
+        /* Feature Card */
+        .feature-card {
+            background: var(--bg-card);
+            background-image: var(--bg-card-gradient);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: all var(--transition-speed);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .status-pill {
+            padding: 6px 14px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 999px;
+            font-size: 12px;
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        
+        .tech-tag {
+            padding: 6px 12px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--accent-blue-light);
+            font-weight: 500;
+        }
+        
+        .service-list {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        
+        .service-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            color: var(--text-secondary);
+            font-size: 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .service-list li::before {
+            content: "✓";
+            color: var(--accent-teal);
+            font-weight: 700;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .metric-card {
+            padding: 20px;
+            background: rgba(37, 99, 235, 0.05);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--accent-blue-light);
+            margin-bottom: 4px;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .engagement-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .engagement-tag {
+            padding: 8px 14px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(20, 184, 166, 0.1));
+            border: 1px solid var(--accent-teal);
+            border-radius: 999px;
+            font-size: 12px;
+            color: var(--accent-teal-light);
+            font-weight: 600;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--text-primary);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+        
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .service-card {
+            background: var(--bg-card);
+            background-image: var(--bg-card-gradient);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: all var(--transition-speed);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: white;
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .service-tag {
+            padding: 4px 12px;
+            background: rgba(20, 184, 166, 0.1);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            border-radius: 6px;
+            font-size: 11px;
+            color: var(--accent-teal-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        
+        /* Footer CTA */
+        .footer-cta {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .footer-cta-content {
+            background: var(--bg-card);
+            background-image: var(--bg-card-gradient);
+            border-radius: 16px;
+            padding: 60px 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .footer-cta h2 {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        
+        .footer-cta p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        
+        .email-link {
+            font-size: 18px;
+            color: var(--accent-blue-light);
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            transition: color var(--transition-speed);
+        }
+        
+        .email-link:hover {
+            color: var(--accent-teal-light);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        footer p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 48px 0;
+            }
+            
+            .services {
+                padding: 48px 0;
+            }
+            
+            .footer-cta {
+                padding: 48px 0;
+            }
+            
+            .footer-cta-content {
+                padding: 40px 24px;
+            }
+            
+            .feature-card {
+                padding: 24px;
+            }
+            
+            .service-card {
+                padding: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="page-shell">
-    <div class="shell-inner">
-      <!-- NAV -->
-      <header class="nav">
-        <a href="#top" class="brand">
-          <div class="brand-logo">
-            <div class="brand-logo-inner">Fx</div>
-          </div>
-          <div>
-            <div class="brand-text-title">Forcetrix Technologies</div>
-            <div class="brand-text-sub">Salesforce • Cloud • AI</div>
-          </div>
-        </a>
-        <div class="nav-cta">
-          <span class="nav-cta-dot"></span>
-          <span>Now accepting select partners</span>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="brand">
+                    <div class="logo">Fx</div>
+                    <div class="brand-text">
+                        <h1>Forcetrix Technologies</h1>
+                        <p class="tagline">We make NPSP to NPC migrations fun again</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        <span>Now accepting select partners</span>
+                    </div>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                        </svg>
+                        <svg id="moonIcon" style="display: none;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
-      </header>
+    </header>
 
-      <!-- HERO -->
-      <main id="top" class="hero-grid">
-        <!-- Left -->
-        <section>
-          <div class="eyebrow">
-            <span class="eyebrow-pill">Revenue‑centric engineering</span>
-            <span class="eyebrow-divider"></span>
-            <span>From messy orgs to measurable impact</span>
-          </div>
-
-          <h1 class="hero-title">
-            Compound your Salesforce, cloud, and AI ROI with
-            <span class="accent">Forcetrix Technologies</span>.
-          </h1>
-
-          <p class="hero-sub">
-            Forcetrix helps high‑growth teams design, build, and harden Salesforce‑centric systems that actually move
-            revenue and efficiency numbers — not just add more dashboards.
-          </p>
-
-          <div class="hero-meta">
-            <div class="meta-item">
-              <span class="meta-dot"></span>
-              <span>Architecture first. Implementation second.</span>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <span class="eyebrow">Revenue-centric engineering</span>
+                        <h2 class="hero-title">We make NPSP to NPC migrations fun again with AI-powered workflows</h2>
+                        <p class="hero-subtitle">Forcetrix Technologies transforms complex Salesforce, cloud, and AI migrations into seamless experiences for nonprofits, B2B SaaS, and enterprises.</p>
+                        <ul class="hero-highlights">
+                            <li>Expert-led NPSP → NPC migrations that actually work</li>
+                            <li>AI-powered automation that reduces manual work by 70%+</li>
+                            <li>Referral-trusted partner with 25+ years of enterprise experience</li>
+                        </ul>
+                        <div class="hero-ctas">
+                            <a href="contact.html" class="btn btn-primary">
+                                Book a discovery call
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="20" height="20">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                </svg>
+                            </a>
+                            <a href="#services" class="btn btn-secondary">Learn about our services</a>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Tech Stack</h3>
+                            <span class="status-pill">Services Online</span>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Salesforce</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">GCP</span>
+                            <span class="tech-tag">Azure</span>
+                            <span class="tech-tag">Jitterbit</span>
+                            <span class="tech-tag">MuleSoft</span>
+                            <span class="tech-tag">Workato</span>
+                        </div>
+                        <ul class="service-list">
+                            <li>Sales Cloud Implementation</li>
+                            <li>Experience Cloud Solutions</li>
+                            <li>Data Migration & Integration</li>
+                            <li>Complex System Integrations</li>
+                            <li>Custom Development & Apps</li>
+                            <li>Agentic Workflows & AI</li>
+                        </ul>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">25+</div>
+                                <div class="metric-label">Years Exp</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">100+</div>
+                                <div class="metric-label">Migrations</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">500+</div>
+                                <div class="metric-label">Projects</div>
+                            </div>
+                        </div>
+                        <div class="engagement-types">
+                            <span class="engagement-tag">Projects</span>
+                            <span class="engagement-tag">Retainers</span>
+                            <span class="engagement-tag">SaaS Subscriptions</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="meta-item">
-              <span class="meta-dot"></span>
-              <span>Optimised for scale, observability, and change.</span>
-            </div>
-          </div>
-
-          <div class="hero-actions">
-            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-              <span>Request a working session</span>
-              <span class="icon">↗</span>
-            </button>
-            <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-              <span class="btn-ghost-dot"></span>
-              <span>View capabilities in 30 seconds</span>
-            </button>
-          </div>
-
-          <p class="hero-footnote">
-            Ideal fit: B2B SaaS and fintech teams with complex Salesforce, multi‑cloud, or analytics needs.
-          </p>
         </section>
 
-        <!-- Right visual card -->
-        <aside class="hero-card" aria-label="Delivery operating system">
-          <div class="hero-card-inner">
-            <div class="card-header">
-              <div class="stack-pill">
-                <span class="dot"></span>
-                <span>Stack: </span>
-                <strong>Salesforce • AWS • GitHub • dbt • Airflow</strong>
-              </div>
-              <div class="status-pill">
-                <span></span>
-                <span>Delivery system online</span>
-              </div>
+        <section class="services" id="services">
+            <div class="container">
+                <h2 class="section-title">What We Do Best</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
+                            </svg>
+                        </div>
+                        <h3>Salesforce Architecture & Implementation</h3>
+                        <div class="service-tags">
+                            <span class="service-tag">Sales Cloud</span>
+                            <span class="service-tag">Experience Cloud</span>
+                            <span class="service-tag">NPSP/NPC</span>
+                        </div>
+                        <p>We design and implement enterprise-grade Salesforce solutions tailored to your business. From complex NPSP to Nonprofit Cloud migrations to custom packaged solutions, we turn Salesforce chaos into streamlined systems that drive revenue and impact.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                            </svg>
+                        </div>
+                        <h3>AI-Powered Agentic Workflows</h3>
+                        <div class="service-tags">
+                            <span class="service-tag">LLM Integration</span>
+                            <span class="service-tag">Automation</span>
+                            <span class="service-tag">Knowledge Retrieval</span>
+                        </div>
+                        <p>Leverage cutting-edge AI to automate complex workflows, build intelligent knowledge retrieval systems, and create agentic processes that work 24/7. We integrate LLM-powered solutions that reduce manual overhead and accelerate decision-making across your organization.</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <h2 class="card-title">Forcetrix Delivery OS</h2>
-            <p class="card-subtitle">
-              A lightweight operating model that blends product thinking with engineering discipline so your Salesforce
-              and data stack evolves without chaos.
-            </p>
+        <section class="footer-cta">
+            <div class="container">
+                <div class="footer-cta-content">
+                    <h2>Ready to transform your Salesforce experience?</h2>
+                    <p>Let's discuss how Forcetrix can help you achieve seamless migrations, powerful integrations, and AI-driven automation.</p>
+                    <a href="contact.html" class="btn btn-primary">
+                        Schedule a consultation
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="20" height="20">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </a>
+                    <div class="contact-info">
+                        <p style="color: var(--text-muted); margin-bottom: 8px;">Or reach out directly via email:</p>
+                        <a href="mailto:ceo@forcetrix.com" class="email-link">ceo@forcetrix.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-            <div class="pill-row">
-              <div class="pill"><strong>Blueprints</strong>&nbsp;for scalable Salesforce &amp; cloud foundations</div>
-              <div class="pill">Event‑driven &amp; near‑real‑time data flows</div>
-              <div class="pill">Opinionated guardrails, not bureaucracy</div>
-            </div>
-
-            <div class="metric-grid">
-              <div class="metric">
-                <div class="metric-label">Time‑to‑impact</div>
-                <div class="metric-value">&lt; 6 weeks<span class="sub"> to first measurable win</span></div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Platform reliability</div>
-                <div class="metric-value">99.9%<span class="metric-chip">target</span></div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Ops load</div>
-                <div class="metric-value">‑40%<span class="sub"> manual work</span></div>
-              </div>
-            </div>
-
-            <div class="roadmap">
-              <div>
-                <div class="roadmap-label">Engagement outline</div>
-              </div>
-              <ul class="roadmap-list">
-                <li>
-                  <span class="roadmap-dot"></span>
-                  <span>Discovery: map revenue‑critical flows &amp; constraints.</span>
-                </li>
-                <li>
-                  <span class="roadmap-dot"></span>
-                  <span>Architecture: target blueprint &amp; sequencing.</span>
-                </li>
-                <li>
-                  <span class="roadmap-dot"></span>
-                  <span>Delivery: ship in thin slices with guardrails.</span>
-                </li>
-                <li>
-                  <span class="roadmap-dot"></span>
-                  <span>Enablement: handover playbooks, runbooks, and dashboards.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </aside>
-      </main>
-
-      <!-- SERVICES / VALUE -->
-      <section id="services" class="section">
-        <h2 class="section-title">What Forcetrix does</h2>
-        <div class="section-grid">
-          <div class="card-lite">
-            <h3>Architecture, refactors, and greenfield builds</h3>
-            <p>
-              Design or clean up Salesforce, data, and integration architecture so it scales to millions of users and
-              doesn’t fall apart when the business changes.
-            </p>
-            <div class="tag-row">
-              <span class="tag">Salesforce architecture &amp; governance</span>
-              <span class="tag">API &amp; event‑driven design</span>
-              <span class="tag">Multi‑cloud patterns</span>
-              <span class="tag accent">Prepared for “oh sh*t” growth</span>
-            </div>
-          </div>
-          <div class="card-lite">
-            <h3>AI‑ and data‑powered workflows</h3>
-            <p>
-              Inject practical AI into existing processes: lead routing, risk scoring, personalised outreach, and
-              decision support — backed by reliable data and observability.
-            </p>
-            <div class="tag-row">
-              <span class="tag">AI‑assisted ops &amp; sales workflows</span>
-              <span class="tag">Analytics &amp; metrics that tie to revenue</span>
-              <span class="tag">Instrumentation &amp; monitoring</span>
-              <span class="tag accent">Concrete business outcomes, not hype</span>
-            </div>
-          </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Forcetrix Technologies. All rights reserved.</p>
         </div>
-      </section>
+    </footer>
 
-      <!-- CONTACT -->
-      <section id="contact" class="contact-row" aria-label="Contact">
-        <div class="contact-pill">
-          <span class="icon">✉</span>
-          <span>Share your context, constraints, and ideal future state in one concise email.</span>
-        </div>
-        <div class="contact-links">
-          <a class="contact-link" href="mailto:founder@forcetrix.com">
-            ceo@forcetrix.com <span>→</span>
-          </a>
-          <a class="contact-link" href="#top">
-            One‑pager ↑
-          </a>
-        </div>
-      </section>
-    </div>
-  </div>
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const html = document.documentElement;
+        
+        // Load saved theme or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+        
+        function setTheme(theme) {
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            if (theme === 'light') {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
