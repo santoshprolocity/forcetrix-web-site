@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Forcetrix Technologies - Schedule a discovery call for your Salesforce migration, AI workflow, or cloud integration needs.">
-    <title>Contact Us | Forcetrix Technologies</title>
+    <meta name="description" content="Thank you for contacting Forcetrix Technologies - We will get back to you shortly.">
+    <title>Thank You | Forcetrix Technologies</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -221,83 +221,66 @@
             }
         }
         
-        /* Form Styles */
-        .contact-form-card {
+        /* Thank You Card */
+        .thank-you-card {
             background: var(--bg-card);
             background-image: var(--bg-card-gradient);
             border-radius: 16px;
-            padding: 40px;
+            padding: 60px 40px;
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
+            text-align: center;
         }
         
-        .form-group {
-            margin-bottom: 24px;
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            animation: pulse 2s ease-in-out infinite;
         }
         
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-        
-        @media (max-width: 600px) {
-            .form-row {
-                grid-template-columns: 1fr;
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 20px rgba(16, 185, 129, 0);
             }
         }
         
-        .form-label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: #10b981;
+            stroke-width: 2.5;
+        }
+        
+        .thank-you-title {
+            font-size: 28px;
+            font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 8px;
+            margin-bottom: 16px;
         }
         
-        .form-label .required {
-            color: var(--accent-blue-light);
+        .thank-you-message {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
         }
         
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 14px 16px;
-            background: var(--input-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 15px;
-            color: var(--text-primary);
-            font-family: 'Outfit', sans-serif;
-            transition: all var(--transition-speed);
-        }
-        
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-        
-        .form-textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .form-select {
-            cursor: pointer;
-        }
-        
-        .form-select option {
-            background: var(--bg-card);
-            color: var(--text-primary);
-        }
-        
-        .btn-submit {
-            width: 100%;
-            padding: 16px 32px;
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
             font-size: 16px;
             font-weight: 600;
             border-radius: 12px;
@@ -308,17 +291,17 @@
             transition: all var(--transition-speed);
             font-family: 'Outfit', sans-serif;
             box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+            text-decoration: none;
         }
         
-        .btn-submit:hover {
+        .btn-home:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
         }
         
-        .btn-submit:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
+        .btn-home svg {
+            width: 20px;
+            height: 20px;
         }
         
         /* Contact Info Card */
@@ -431,9 +414,13 @@
                 padding: 48px 0;
             }
             
-            .contact-form-card,
+            .thank-you-card,
             .contact-info-card {
                 padding: 28px;
+            }
+            
+            .thank-you-card {
+                padding: 40px 28px;
             }
         }
     </style>
@@ -446,7 +433,7 @@
                     <div class="logo">Fx</div>
                     <div class="brand-text">
                         <h1>Forcetrix Technologies</h1>
-                        <p class="tagline">We make development fun with Agentic AI Workflows</p>
+                        <p class="tagline">We make development fun with Agentic AI Worflows</p>
                     </div>
                 </a>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -469,99 +456,32 @@
                         <div class="breadcrumb">
                             <a href="index.html">Home</a>
                             <span>→</span>
-                            <span>Contact</span>
+                            <a href="contact.html">Contact</a>
+                            <span>→</span>
+                            <span>Thank You</span>
                         </div>
-                        <h2 class="contact-title">Let's Build Something Great Together</h2>
-                        <p class="contact-subtitle">Schedule a discovery call to discuss your Salesforce migration, AI workflow, or cloud integration needs.</p>
+                        <h2 class="contact-title">Message Received!</h2>
+                        <p class="contact-subtitle">Your inquiry has been successfully submitted to our team.</p>
                     </div>
 
                     <div class="contact-grid">
-                        <div class="contact-form-card">
-                            <!-- Salesforce Web-to-Lead Form -->
-                            <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Dg5000002DDMc" method="POST">
-                                <input type="hidden" name="oid" value="00Dg5000002DDMc">
-                                <input type="hidden" name="retURL" value="https://santoshprolocity.github.io/forcetrix-web-site/thankyou.html">
-
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label class="form-label" for="first_name">First Name <span class="required">*</span></label>
-                                        <input type="text" id="first_name" name="first_name" class="form-input" maxlength="40" required placeholder="John">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="form-label" for="last_name">Last Name <span class="required">*</span></label>
-                                        <input type="text" id="last_name" name="last_name" class="form-input" maxlength="80" required placeholder="Doe">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="form-label" for="email">Email Address <span class="required">*</span></label>
-                                    <input type="email" id="email" name="email" class="form-input" maxlength="80" required placeholder="john@company.com">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="form-label" for="company">Company Name <span class="required">*</span></label>
-                                    <input type="text" id="company" name="company" class="form-input" maxlength="40" required placeholder="Your Company">
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label class="form-label" for="country_code">Country</label>
-                                        <select id="country_code" name="country_code" class="form-select">
-                                            <option value="">Select country...</option>
-                                            <option value="US">United States</option>
-                                            <option value="CA">Canada</option>
-                                            <option value="GB">United Kingdom</option>
-                                            <option value="AU">Australia</option>
-                                            <option value="DE">Germany</option>
-                                            <option value="FR">France</option>
-                                            <option value="IN">India</option>
-                                            <option value="JP">Japan</option>
-                                            <option value="BR">Brazil</option>
-                                            <option value="MX">Mexico</option>
-                                            <option value="NL">Netherlands</option>
-                                            <option value="ES">Spain</option>
-                                            <option value="IT">Italy</option>
-                                            <option value="SE">Sweden</option>
-                                            <option value="CH">Switzerland</option>
-                                            <option value="SG">Singapore</option>
-                                            <option value="NZ">New Zealand</option>
-                                            <option value="IE">Ireland</option>
-                                            <option value="BE">Belgium</option>
-                                            <option value="AT">Austria</option>
-                                            <option value="DK">Denmark</option>
-                                            <option value="NO">Norway</option>
-                                            <option value="FI">Finland</option>
-                                            <option value="PL">Poland</option>
-                                            <option value="ZA">South Africa</option>
-                                            <option value="AE">United Arab Emirates</option>
-                                            <option value="IL">Israel</option>
-                                            <option value="KR">South Korea</option>
-                                            <option value="HK">Hong Kong</option>
-                                            <option value="PH">Philippines</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="form-label" for="00Ng5000004NT2T">Product Interest</label>
-                                        <select id="00Ng5000004NT2T" name="00Ng5000004NT2T" class="form-select" title="Product Interest">
-                                            <option value="">Select product...</option>
-                                            <option value="GC1000 series">GC1000 series</option>
-                                            <option value="GC3000 series">GC3000 series</option>
-                                            <option value="GC5000 series">GC5000 series</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="form-label" for="description">Message</label>
-                                    <textarea id="description" name="description" class="form-textarea" placeholder="Tell us about your project or needs..."></textarea>
-                                </div>
-
-                                <button type="submit" class="btn-submit">
-                                    Send Message
-                                </button>
-                            </form>
+                        <div class="thank-you-card">
+                            <div class="success-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                </svg>
+                            </div>
+                            <h3 class="thank-you-title">Thank You for Your Interest!</h3>
+                            <p class="thank-you-message">
+                                We appreciate you reaching out to Forcetrix Technologies. 
+                                Our team will review your inquiry and get back to you shortly.
+                            </p>
+                            <a href="index.html" class="btn-home">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                </svg>
+                                Back to Home
+                            </a>
                         </div>
 
                         <div class="contact-info-card">
