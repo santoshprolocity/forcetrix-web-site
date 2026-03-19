@@ -1,1 +1,368 @@
 
+<!doctype html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="The definitive, human-led guide to the Claude Certified Architect (CCA) – Foundations exam. No fluff, just the technical reality of the 2026 launch."
+        />
+        <title>Guide: Claude Certified Architect (CCA) Foundations | Forcetrix</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <style>
+            /* CSS Variables for Theming */
+            :root {
+                --transition-speed: 0.3s;
+            }
+
+            [data-theme="dark"] {
+                --bg-primary: #0a0e1f;
+                --bg-secondary: #050812;
+                --bg-card: #121d35;
+                --bg-card-gradient: radial-gradient(
+                    circle at top right,
+                    rgba(37, 99, 235, 0.05),
+                    transparent 70%
+                );
+                --text-primary: #e2e8f0;
+                --text-secondary: #94a3b8;
+                --text-muted: #64748b;
+                --accent-blue: #2563eb;
+                --accent-blue-light: #3b82f6;
+                --accent-blue-dark: #1d4ed8;
+                --accent-teal: #14b8a6;
+                --accent-teal-light: #5eead4;
+                --border-color: rgba(148, 163, 184, 0.1);
+                --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+                --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.4);
+            }
+
+            [data-theme="light"] {
+                --bg-primary: #ffffff;
+                --bg-secondary: #f1f5f9;
+                --bg-card: #f1f5f9;
+                --bg-card-gradient: radial-gradient(
+                    circle at top right,
+                    rgba(37, 99, 235, 0.03),
+                    transparent 70%
+                );
+                --text-primary: #1e293b;
+                --text-secondary: #64748b;
+                --text-muted: #94a3b8;
+                --accent-blue: #2563eb;
+                --accent-blue-light: #3b82f6;
+                --accent-blue-dark: #1d4ed8;
+                --accent-teal: #14b8a6;
+                --accent-teal-light: #0d9488;
+                --border-color: rgba(30, 41, 59, 0.1);
+                --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+                --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.12);
+            }
+
+            /* Reset & Base Styles */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Outfit", sans-serif;
+                background: linear-gradient(
+                    135deg,
+                    var(--bg-primary) 0%,
+                    var(--bg-secondary) 100%
+                );
+                color: var(--text-primary);
+                line-height: 1.6;
+                min-height: 100vh;
+                transition:
+                    background var(--transition-speed),
+                    color var(--transition-speed);
+            }
+
+            .container {
+                max-width: 1140px;
+                margin: 0 auto;
+                padding: 0 24px;
+            }
+
+            header {
+                padding: 24px 0;
+                position: sticky;
+                top: 0;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border-color);
+                backdrop-filter: blur(10px);
+                z-index: 1000;
+            }
+
+            .header-content {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 20px;
+            }
+
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .logo {
+                width: 48px;
+                height: 48px;
+                background: linear-gradient(
+                    135deg,
+                    var(--accent-blue) 0%,
+                    var(--accent-teal) 100%
+                );
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: "Space Mono", monospace;
+                font-weight: 700;
+                font-size: 20px;
+                color: white;
+                box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            }
+
+            .brand-text h1 {
+                font-size: 22px;
+                font-weight: 700;
+                color: var(--text-primary);
+            }
+
+            .theme-toggle {
+                background: var(--bg-card);
+                border: 1px solid var(--border-color);
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+
+            .hero { padding: 80px 0; }
+            .hero-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 48px;
+                align-items: start;
+            }
+
+            @media (min-width: 992px) {
+                .hero-grid { grid-template-columns: 1.2fr 1fr; }
+            }
+
+            .eyebrow {
+                display: inline-block;
+                padding: 6px 16px;
+                background: rgba(37, 99, 235, 0.1);
+                border: 1px solid var(--accent-blue);
+                border-radius: 999px;
+                font-size: 13px;
+                font-weight: 600;
+                color: var(--accent-blue-light);
+                margin-bottom: 24px;
+            }
+
+            .hero-title {
+                font-size: clamp(32px, 6vw, 48px);
+                font-weight: 800;
+                line-height: 1.1;
+                margin-bottom: 20px;
+                color: var(--text-primary);
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+                color: var(--text-secondary);
+                margin-bottom: 32px;
+            }
+
+            .feature-card {
+                background: var(--bg-card);
+                border-radius: 16px;
+                padding: 32px;
+                border: 1px solid var(--border-color);
+                box-shadow: var(--shadow);
+            }
+
+            .metric-value {
+                font-size: 28px;
+                font-weight: 800;
+                color: var(--accent-blue-light);
+                font-family: "Space Mono", monospace;
+            }
+
+            .metrics-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                margin-top: 24px;
+            }
+
+            .metric-card {
+                padding: 20px;
+                background: rgba(37, 99, 235, 0.05);
+                border-radius: 12px;
+                text-align: center;
+                border: 1px solid var(--border-color);
+            }
+
+            .btn {
+                padding: 14px 32px;
+                border-radius: 12px;
+                text-decoration: none;
+                font-weight: 600;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                transition: var(--transition-speed);
+            }
+
+            .btn-primary {
+                background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+                color: white;
+            }
+
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 32px;
+                margin-top: 48px;
+            }
+
+            .service-card {
+                background: var(--bg-card);
+                padding: 32px;
+                border-radius: 16px;
+                border: 1px solid var(--border-color);
+            }
+
+            .tech-tag {
+                padding: 4px 10px;
+                background: rgba(20, 184, 166, 0.1);
+                border-radius: 6px;
+                font-size: 11px;
+                color: var(--accent-teal-light);
+                margin-right: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="brand">
+                        <div class="logo">CCA</div>
+                        <div class="brand-text">
+                            <h1>Forcetrix Insights</h1>
+                        </div>
+                    </div>
+                    <button class="theme-toggle" id="themeToggle">
+                        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-grid">
+                        <div class="hero-content">
+                            <span class="eyebrow">March 2026 Special Report</span>
+                            <h2 class="hero-title">Claude Certified Architect: A 6-Month Sprint to Excellence</h2>
+                            <p class="hero-subtitle">
+                                Anthropic finally dropped the CCA Foundations exam. It's not a "prompting" badge—it's an engineering hurdle for the people building the next generation of agentic workflows.
+                            </p>
+                            <div class="hero-ctas">
+                                <a href="https://anthropic.skilljar.com" class="btn btn-primary">Visit Anthropic Academy</a>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <h3 style="margin-bottom: 16px;">Exam Vitals</h3>
+                            <div class="metrics-grid">
+                                <div class="metric-card">
+                                    <div class="metric-value">60</div>
+                                    <div class="metric-label">Questions</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-value">720</div>
+                                    <div class="metric-label">Pass Score</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-value">6mo</div>
+                                    <div class="metric-label">Expiry</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-value">$99</div>
+                                    <div class="metric-label">Cost</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container" style="padding-bottom: 80px;">
+                <h2 style="font-size: 32px; margin-bottom: 24px;">The Technical Reality</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="tech-tag">Domain 1</span>
+                        <h3 style="margin: 12px 0;">Agentic Architecture</h3>
+                        <p>27% of the exam. This is the hardest part. You need to prove you can stop "infinite loops" and manage state across multi-agent handoffs without burning your token budget.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="tech-tag">Domain 2</span>
+                        <h3 style="margin: 12px 0;">MCP Integration</h3>
+                        <p>Model Context Protocol is the star. You'll be tested on writing effective tool descriptions and configuring MCP servers to bridge Claude with private databases.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="tech-tag">Domain 3</span>
+                        <h3 style="margin: 12px 0;">Claude Code</h3>
+                        <p>You need to know your way around <code>CLAUDE.md</code>. Hierarchy, path-scoped rules, and context management are non-negotiable for this certification.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container" style="text-align: center; padding-bottom: 100px;">
+                <div class="feature-card" style="background: rgba(20, 184, 166, 0.05); border-color: var(--accent-teal);">
+                    <h2 style="margin-bottom: 16px;">Is it worth the grind?</h2>
+                    <p style="max-width: 800px; margin: 0 auto 24px; font-size: 18px;">
+                        Absolutely. For the first time, we have a **structured learning path** that moves beyond cool tricks. Whether you take the proctored test or just grind the free Skilljar courses, this is the clearest roadmap for anyone looking to transition from an "AI user" to a true "AI architect." The demand for these specific skills is sky-high—this is how you stand out in 2026.
+                    </p>
+                    <a href="mailto:ceo@forcetrix.com" class="btn btn-primary">Discuss AI Architecture</a>
+                </div>
+            </section>
+        </main>
+
+        <footer style="padding: 40px 0; border-top: 1px solid var(--border-color); text-align: center;">
+            <p style="color: var(--text-muted);">&copy; 2026 Forcetrix Technologies. All rights reserved.</p>
+        </footer>
+
+        <script>
+            const themeToggle = document.getElementById("themeToggle");
+            const html = document.documentElement;
+            themeToggle.addEventListener("click", () => {
+                const current = html.getAttribute("data-theme");
+                html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+            });
+        </script>
+    </body>
+</html>
